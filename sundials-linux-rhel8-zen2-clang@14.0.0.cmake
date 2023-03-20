@@ -14,17 +14,29 @@ set(CMAKE_C_STANDARD "99" CACHE STRING "")
 
 set(CMAKE_CXX_STANDARD "14" CACHE STRING "")
 
+set(MPI_ENABLE ON CACHE BOOL "")
+
+set(MPI_MPICC "/usr/tce/packages/mvapich2/mvapich2-2.3.6-gcc-10.3.1/bin/mpicc" CACHE PATH "")
+
+set(MPI_MPICXX "/usr/tce/packages/mvapich2/mvapich2-2.3.6-gcc-10.3.1/bin/mpicxx" CACHE PATH "")
+
+set(MPI_MPIF77 "/usr/tce/packages/mvapich2/mvapich2-2.3.6-gcc-10.3.1/bin/mpif77" CACHE PATH "")
+
+set(MPI_MPIF90 "/usr/tce/packages/mvapich2/mvapich2-2.3.6-gcc-10.3.1/bin/mpif90" CACHE PATH "")
+
+set(SUNDIALS_TEST_MPIRUN_COMMAND "flux mini run" CACHE STRING "")
+
 set(ENABLE_HIP ON CACHE BOOL "")
 
-set(CMAKE_C_COMPILER "/opt/rocm-5.2.3/llvm/bin/clang" CACHE PATH "")
+set(CMAKE_C_COMPILER "/opt/rocm-5.4.1/llvm/bin/clang" CACHE PATH "")
 
-set(CMAKE_CXX_COMPILER "/opt/rocm-5.2.3/hip/bin/hipcc" CACHE PATH "")
+set(CMAKE_CXX_COMPILER "/opt/rocm-5.4.1/hip/bin/hipcc" CACHE PATH "")
 
-set(HIP_PATH "/opt/rocm-5.2.3/hip" CACHE PATH "")
+set(HIP_PATH "/opt/rocm-5.4.1/hip" CACHE PATH "")
 
-set(HIP_CLANG_INCLUDE_PATH "/opt/rocm-5.2.3/llvm/include" CACHE PATH "")
+set(HIP_CLANG_INCLUDE_PATH "/opt/rocm-5.4.1/llvm/include" CACHE PATH "")
 
-set(ROCM_PATH "/opt/rocm-5.2.3/llvm" CACHE PATH "")
+set(ROCM_PATH "/opt/rocm-5.4.1/llvm" CACHE PATH "")
 
 set(AMDGPU_TARGETS "gfx906" CACHE STRING "")
 
@@ -76,7 +88,7 @@ set(KLU_ENABLE OFF CACHE BOOL "")
 
 set(LAPACK_ENABLE OFF CACHE BOOL "")
 
-set(OPENMP_ENABLE ON CACHE BOOL "")
+set(OPENMP_ENABLE OFF CACHE BOOL "")
 
 set(PETSC_ENABLE OFF CACHE BOOL "")
 
@@ -90,19 +102,9 @@ set(SUPERLUMT_ENABLE OFF CACHE BOOL "")
 
 set(Trilinos_ENABLE OFF CACHE BOOL "")
 
-set(ENABLE_KOKKOS ON CACHE BOOL "")
+set(ENABLE_KOKKOS OFF CACHE BOOL "")
 
-set(ENABLE_KOKKOS_KERNELS ON CACHE BOOL "")
-
-set(ENABLE_GINKGO ON CACHE BOOL "")
-
-set(Ginkgo_DIR "/usr/WS2/pan13/sundials/spack_installs/v0.19.1/corona/clang-14.0.0/ginkgo-1.5.0.glu_experimental-662mmd646tpy3nznxe4ihy4p6lwo7uem" CACHE PATH "")
-
-set(SUNDIALS_GINKGO_BACKENDS "REF;OMP;HIP" CACHE STRING "")
-
-set(Kokkos_DIR "/usr/WS2/pan13/sundials/spack_installs/v0.19.1/corona/clang-14.0.0/kokkos-3.7.00-mcgxya2ybbtbtcsz446i2txcmcd7bhcl" CACHE PATH "")
-
-set(KokkosKernels_DIR "/usr/WS2/pan13/sundials/spack_installs/v0.19.1/corona/clang-14.0.0/kokkos-kernels-3.7.00-nqbyiqdcnmaywswfnlmsicvz7p5un7sd" CACHE PATH "")
+set(ENABLE_KOKKOS_KERNELS OFF CACHE BOOL "")
 
 set(EXAMPLES_ENABLE_C ON CACHE BOOL "")
 
