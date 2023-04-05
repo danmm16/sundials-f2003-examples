@@ -2,21 +2,21 @@
 
 # Debug spec and variables
 # COMPILER_SPEC=rocmcc@5.2.3
-COMPILER_SPEC=clang@14.0.0
-AMDGPU_TARGET=gfx906
-ROCM_VERSION=5.2.3
+# COMPILER_SPEC=clang@14.0.0
+# AMDGPU_TARGET=gfx906
+# ROCM_VERSION=5.2.3
 
-SPEC="%${COMPILER_SPEC} cstd=99 cxxstd=14 precision=double ~int64 amdgpu_target=${AMDGPU_TARGET} scheduler=flux +mpi+rocm"
+# SPEC="%${COMPILER_SPEC} cstd=99 cxxstd=14 precision=double ~int64 amdgpu_target=${AMDGPU_TARGET} scheduler=flux +mpi+rocm"
 
 # SPEC="%${COMPILER_SPEC} cstd=99 cxxstd=14 precision=double ~int64 amdgpu_target=${AMDGPU_TARGET} ~mpi+openmp+rocm+kokkos+kokkos-kernels+ginkgo ^ginkgo+rocm amdgpu_target=${AMDGPU_TARGET} ^kokkos+rocm~profiling amdgpu_target=${AMDGPU_TARGET} ^kokkos-kernels ^hipblas@${ROCM_VERSION} ^hipsparse@${ROCM_VERSION} ^rocrand@${ROCM_VERSION} ^rocthrust@${ROCM_VERSION} ^hip@${ROCM_VERSION} ^hsa-rocr-dev@${ROCM_VERSION} ^llvm-amdgpu@${ROCM_VERSION}"
 
 # Add Ginkgo, Kokkos, Kokkos-kernels next
 
 # CUDA Debug
-# COMPILER_SPEC=gcc@8.3.1
-# CUDA_SPEC=cuda@11.5.0
+COMPILER_SPEC=gcc@8.3.1
+CUDA_SPEC=cuda@11.5.0
 
-# SPEC="%${COMPILER_SPEC} cstd=99 cxxstd=14 precision=double +mpi+openmp+cuda+kokkos cuda_arch=70 ^kokkos+wrapper+cuda cuda_arch=70"
+SPEC="%${COMPILER_SPEC} cstd=99 cxxstd=14 precision=double ~int64 +mpi+openmp+cuda+raja+magma+superlu-dist+ginkgo+hypre cuda_arch=70 ^hypre ^ginkgo+cuda cuda_arch=70 ^superlu-dist+cuda cuda_arch=70 ^magma+cuda cuda_arch=70 ^raja+cuda~openmp~examples~exercises cuda_arch=70 ^${CUDA_SPEC}"
 
 # make sure lmod is loaded
 if test -e /usr/share/lmod/lmod/init/bash
