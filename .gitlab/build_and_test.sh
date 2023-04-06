@@ -16,7 +16,7 @@
 COMPILER_SPEC=xl@16.1.1.10
 CUDA_SPEC=cuda@10.1.243
 
-SPEC="%${COMPILER_SPEC} cstd=99 cxxstd=14 precision=double ~int64 +mpi+openmp+cuda~raja+magma+superlu-dist cuda_arch=70 ^superlu-dist+cuda cuda_arch=70 ^magma+cuda cuda_arch=70 ^${CUDA_SPEC}"
+SPEC="%${COMPILER_SPEC} cstd=99 cxxstd=14 precision=double ~int64 scheduler=lsf +mpi+openmp+cuda~raja+magma+superlu-dist cuda_arch=70 ^superlu-dist+cuda cuda_arch=70 ^magma+cuda cuda_arch=70 ^${CUDA_SPEC}"
 
 # make sure lmod is loaded
 if test -e /usr/share/lmod/lmod/init/bash

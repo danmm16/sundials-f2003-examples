@@ -179,7 +179,12 @@ class Sundials(CachedCMakePackage, CudaPackage, ROCmPackage):
     )
 
     # Scheduler
-    variant("scheduler", default="slurm", description="Specify which scheduler the system runs on.", values=("flux", "lsf", "slurm"))
+    variant(
+        "scheduler",
+        default="slurm",
+        description="Specify which scheduler the system runs on. For launching MPI jobs",
+        values=("flux", "lsf", "slurm")
+    )
 
     # ==========================================================================
     # Dependencies
@@ -669,9 +674,12 @@ class Sundials(CachedCMakePackage, CudaPackage, ROCmPackage):
                     cmake_cache_path("MPI_MPIF90", spec["mpi"].mpifc)
                 ]
             )
-            if spec.satisfies("scheduler=flux"):
-                entries.append(cmake_cache_string("SUNDIALS_TEST_MPIRUN_COMMAND", "flux mini run"))
-                
+            if "scheduler=flux" in spec:
+                entries.append(cmake_cache_string("SUNDIALS_TEST_MPIRUN_COMMAND", "flux run"))
+            if "scheduler=slurm" in spec:
+                entries.append(cmake_cache_string("SUNDIALS_TEST_MPIRUN_COMMAND", "srun"))
+            if "scheduler=lsf" in spec:
+                entries.append(cmake_cache_string("SUNDIALS_TEST_MPIRUN_COMMAND", "jsrun"))
 
         return entries
 
